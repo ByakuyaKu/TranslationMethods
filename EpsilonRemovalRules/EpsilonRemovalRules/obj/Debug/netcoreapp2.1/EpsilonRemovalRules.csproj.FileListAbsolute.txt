@@ -1,0 +1,11 @@
+D:\TranslationMethods\EpsilonRemovalRules\EpsilonRemovalRules\bin\Debug\netcoreapp2.1\EpsilonRemovalRules.deps.json
+D:\TranslationMethods\EpsilonRemovalRules\EpsilonRemovalRules\bin\Debug\netcoreapp2.1\EpsilonRemovalRules.runtimeconfig.json
+D:\TranslationMethods\EpsilonRemovalRules\EpsilonRemovalRules\bin\Debug\netcoreapp2.1\EpsilonRemovalRules.runtimeconfig.dev.json
+D:\TranslationMethods\EpsilonRemovalRules\EpsilonRemovalRules\bin\Debug\netcoreapp2.1\EpsilonRemovalRules.dll
+D:\TranslationMethods\EpsilonRemovalRules\EpsilonRemovalRules\bin\Debug\netcoreapp2.1\EpsilonRemovalRules.pdb
+D:\TranslationMethods\EpsilonRemovalRules\EpsilonRemovalRules\obj\Debug\netcoreapp2.1\EpsilonRemovalRules.csprojAssemblyReference.cache
+D:\TranslationMethods\EpsilonRemovalRules\EpsilonRemovalRules\obj\Debug\netcoreapp2.1\EpsilonRemovalRules.csproj.CoreCompileInputs.cache
+D:\TranslationMethods\EpsilonRemovalRules\EpsilonRemovalRules\obj\Debug\netcoreapp2.1\EpsilonRemovalRules.AssemblyInfoInputs.cache
+D:\TranslationMethods\EpsilonRemovalRules\EpsilonRemovalRules\obj\Debug\netcoreapp2.1\EpsilonRemovalRules.AssemblyInfo.cs
+D:\TranslationMethods\EpsilonRemovalRules\EpsilonRemovalRules\obj\Debug\netcoreapp2.1\EpsilonRemovalRules.dll
+D:\TranslationMethods\EpsilonRemovalRules\EpsilonRemovalRules\obj\Debug\netcoreapp2.1\EpsilonRemovalRules.pdb
