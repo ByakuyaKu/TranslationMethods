@@ -9,7 +9,7 @@ namespace EpsilonRemovalRules
     {
         static void Main(string[] args)
         {
-            Queue<Char> Q = new Queue<char>();
+            List<Char> Q = new List<char>();
 
             List<Rules> Grammar = new List<Rules>();
 
@@ -23,38 +23,83 @@ namespace EpsilonRemovalRules
             {
                 if (Rules.CheckEps(Grammar[i].rightSide))
                 {
-                    //Grammar[i].isEpsilon = true;
-                    Q.Enqueue(Grammar[i].leftSide);
-                    Grammar.RemoveAt(i);
+                    Grammar[i].isEpsilon = true;
+                    Q.Add(Grammar[i].leftSide);
                 }
-                else if (Rules.CheckLowerChars(Grammar[i].rightSide))
-                    Grammar.RemoveAt(i);
             }
 
-            while (Q.Count != 0)
+            for (int k = 0; k < Q.Count; k++) 
             {
-                var element = Q.Dequeue();
-
                 for (int i = 0; i < Grammar.Count; i++)
                 {
                     for (int j = 0; j < Grammar[i].rightSide.Length; j++)
                     {
-                        if (element == Grammar[i].rightSide[j])
+                        if (Q[k] == Grammar[i].rightSide[j] && Grammar[i].isEpsilon != true)
                             Grammar[i].counter--;
                     }
 
-                    if (Grammar[i].counter == 0)
+                    if (Grammar[i].counter == 0 && Grammar[i].isEpsilon != true)
                     {
-                        Q.Enqueue(Grammar[i].leftSide);
-                       // Grammar[i].isEpsilon = true;
-                        Grammar.RemoveAt(i);
+                        Q.Add(Grammar[i].leftSide);
+                        Grammar[i].isEpsilon = true;
                     }
                 }
             }
 
-            Console.WriteLine("Result");
+
+                Console.WriteLine("Non-eps:");
             foreach (var item in Grammar)
-                //if (!item.isEpsilon)
+                if (!item.isEpsilon)
+                    Console.WriteLine(item.leftSide + " -> " + item.rightSide);
+
+            for (int i = 0; i < Grammar.Count; i++)
+                if (Rules.CheckEps(Grammar[i].rightSide))
+                    Grammar.RemoveAt(i);
+
+            Console.WriteLine("Before result:");
+            foreach (var item in Grammar)
+                Console.WriteLine(item.leftSide + " -> " + item.rightSide);
+
+            string s = "";
+            List<Char> Tmp = new List<char>(0);
+            int z = Grammar.Count;
+            for (int i = 0; i < z-1; i++)
+            {
+                if (Grammar[i].rightSide.Length != 1)
+                {
+                    foreach (var element in Q)
+                        if (Grammar[i].rightSide.Contains(element) && !Tmp.Contains(element))
+                            Tmp.Add(element);
+
+
+                    foreach (var element in Grammar[i].rightSide)
+                        if (char.IsLower(element))
+                            s += element;
+
+                    string ss = s;
+                    if (s.Length != 0)
+                        Grammar.Add(new Rules(Grammar[i].leftSide, s));
+
+                    int k = 0;
+                    while (k <= Tmp.Count - 1)
+                    {
+                        for (int j = k; j < Tmp.Count; j++)
+                        {
+                            //if ((j == 0))
+                            //    Grammar.Add(new Rules(Grammar[i].leftSide, ss + Tmp[j]));
+                            Grammar.Add(new Rules(Grammar[i].leftSide, s += Tmp[j]));
+                        }
+                        k++;
+                        s = ss;
+                    }
+                    Tmp.Clear();
+                    Grammar.RemoveAt(i);    
+                    s = "";
+                }
+            }
+
+            Console.WriteLine("Result:");
+            foreach (var item in Grammar)
                     Console.WriteLine(item.leftSide + " -> " + item.rightSide);
 
             Console.ReadKey();

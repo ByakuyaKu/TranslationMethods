@@ -13,7 +13,6 @@ namespace EpsilonRemovalRules
         public string rightSide;
         public bool isEpsilon;
         public int counter;
-        public static int counterLowerChars;
 
         public Rules(Char c, string s)
         {
@@ -21,18 +20,6 @@ namespace EpsilonRemovalRules
             rightSide = s;
             counter = s.Length;
             isEpsilon = false;
-        }
-        
-        public static bool CheckLowerChars(string s)
-        {
-            for (int i = 0; i < s.Length; i++) 
-                if(!Char.IsUpper(s[i]))
-                    counterLowerChars++;
-
-            if (counterLowerChars == s.Length)
-                return true;
-
-            return false;
         }
 
         public static bool CheckEps(string s)
@@ -46,7 +33,7 @@ namespace EpsilonRemovalRules
 
         public static List<Rules> ReadRulesInTxt()
         {
-            string path = @"D:\TranslationMethods\EpsilonRemovalRules\text3.txt";
+            string path = @"D:\TranslationMethods\EpsilonRemovalRules\text1.txt";
             var CurLine = "";
             List<Rules> Grammar = new List<Rules>();
 
